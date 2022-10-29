@@ -4,24 +4,23 @@ import cz.tomaskopulety.bookstore.model.Author;
 import cz.tomaskopulety.bookstore.model.Book;
 import cz.tomaskopulety.bookstore.model.BookModel;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-@Service
-public class BookService {
-    private final BookRepository bookRepository;
+@org.springframework.stereotype.Service
+public class Service {
+    private final Repository repository;
 
     @Autowired
-    public BookService(BookRepository bookRepository) {
-        this.bookRepository = bookRepository;
+    public Service(Repository repository) {
+        this.repository = repository;
     }
 
     private List<BookModel> getDatabase() {
-        return bookRepository.findAll();
+        return repository.findAll();
 
     }
 

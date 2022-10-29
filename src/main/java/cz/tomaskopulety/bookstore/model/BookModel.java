@@ -2,18 +2,18 @@ package cz.tomaskopulety.bookstore.model;
 
 import javax.persistence.*;
 
-@Entity
-@Table
+//@Entity
+//@Table(name = "books")
 public class BookModel {
-    @Id
-    @SequenceGenerator(
-            name = "book_sequence",
-            sequenceName = "book_sequence",
-            allocationSize = 1)
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "book_sequence"
-    )
+//  @Id
+//    @SequenceGenerator(
+//            name = "book_sequence",
+//            sequenceName = "book_sequence",
+//            allocationSize = 1)
+//    @GeneratedValue(
+//            strategy = GenerationType.SEQUENCE,
+//            generator = "book_sequence"
+//    )
     private long id;
     private String name;
     private int price;

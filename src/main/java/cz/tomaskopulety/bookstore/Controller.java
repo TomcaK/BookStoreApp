@@ -12,21 +12,21 @@ import java.util.Set;
 
 @RestController
 @RequestMapping(path = "/")
-public class BookController {
-    private final BookService bookService;
+public class Controller {
+    private final Service service;
 
     @Autowired
-    public BookController(BookService bookService) {
-        this.bookService = bookService;
+    public Controller(Service service) {
+        this.service = service;
     }
 
     @GetMapping(path = "books")
     public List<Book> getBooks() {
-        return bookService.getBooks();
+        return service.getBooks();
     }
 
     @GetMapping(path = "authors")
     public Set<Author> getAuthors() {
-        return bookService.getAuthors();
+        return service.getAuthors();
     }
 }
