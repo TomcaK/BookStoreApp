@@ -1,43 +1,39 @@
 package cz.tomaskopulety.bookstore.model;
 
-import javax.persistence.*;
+import java.util.Objects;
 
-@Entity
-@Table
 public class Book {
-    @Id
-    @SequenceGenerator(
-            name = "book_sequence",
-            sequenceName = "book_sequence",
-            allocationSize = 1)
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "book_sequence"
-    )
-    private long id;
-    private String name;
-    private int price;
-    private String author;
+    private final String name;
+    private final Integer price;
 
-
-    public Book(String name, int price,String author) {
+    public Book(String name, Integer price) {
         this.name = name;
         this.price = price;
-        this.author = author;
-    }
-
-    public Book() {
     }
 
     public String getName() {
         return name;
     }
 
-    public int getPrice() {
+    public Integer getPrice() {
         return price;
     }
 
-    public String getAuthor() {
-        return author;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Book book = (Book) o;
+
+        if (!Objects.equals(name, book.name)) return false;
+        return Objects.equals(price, book.price);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = name != null ? name.hashCode() : 0;
+        result = 31 * result + (price != null ? price.hashCode() : 0);
+        return result;
     }
 }

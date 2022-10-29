@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequestMapping(path = "/")
@@ -19,12 +20,13 @@ public class BookController {
         this.bookService = bookService;
     }
 
-    @GetMapping(path = "authors")
-    public List<Book> getAuthors() {
+    @GetMapping(path = "books")
+    public List<Book> getBooks() {
         return bookService.getBooks();
     }
 
-
-
-
+    @GetMapping(path = "authors")
+    public Set<Author> getAuthors() {
+        return bookService.getAuthors();
+    }
 }
