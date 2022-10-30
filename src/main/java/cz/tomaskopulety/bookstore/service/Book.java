@@ -1,4 +1,4 @@
-package cz.tomaskopulety.bookstore.model;
+package cz.tomaskopulety.bookstore.service;
 
 import java.util.Objects;
 

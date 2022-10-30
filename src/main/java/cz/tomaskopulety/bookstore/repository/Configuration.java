@@ -1,4 +1,4 @@
-package cz.tomaskopulety.bookstore;
+package cz.tomaskopulety.bookstore.repository;
 
 import cz.tomaskopulety.bookstore.model.BookModel;
 import org.springframework.boot.CommandLineRunner;

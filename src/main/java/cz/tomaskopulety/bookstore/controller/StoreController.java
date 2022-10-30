@@ -1,7 +1,8 @@
-package cz.tomaskopulety.bookstore;
+package cz.tomaskopulety.bookstore.controller;
 
-import cz.tomaskopulety.bookstore.model.Author;
-import cz.tomaskopulety.bookstore.model.Book;
+import cz.tomaskopulety.bookstore.service.Author;
+import cz.tomaskopulety.bookstore.service.Book;
+import cz.tomaskopulety.bookstore.service.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,11 +13,11 @@ import java.util.Set;
 
 @RestController
 @RequestMapping(path = "/")
-public class Controller {
+public class StoreController {
     private final Service service;
 
     @Autowired
-    public Controller(Service service) {
+    public StoreController(Service service) {
         this.service = service;
     }
 

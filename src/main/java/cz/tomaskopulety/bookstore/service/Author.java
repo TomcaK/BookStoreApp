@@ -1,4 +1,6 @@
-package cz.tomaskopulety.bookstore.model;
+package cz.tomaskopulety.bookstore.service;
+
+import cz.tomaskopulety.bookstore.model.BookModel;
 
 import java.util.List;
 import java.util.Objects;
@@ -11,7 +13,9 @@ public class Author {
 
     public Author(String name, List<BookModel> books) {
         this.name = name;
-        this.books = books.stream().map(bookModel -> new Book(bookModel.getName(), bookModel.getPrice())).collect(Collectors.toList());
+        this.books = books.stream()
+                .filter(bookModel -> bookModel.getAuthor().equals(name))
+                .map(bookModel -> new Book(bookModel.getName(), bookModel.getPrice())).collect(Collectors.toList());
     }
 
 

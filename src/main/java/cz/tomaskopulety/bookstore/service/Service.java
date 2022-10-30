@@ -1,7 +1,6 @@
-package cz.tomaskopulety.bookstore;
+package cz.tomaskopulety.bookstore.service;
 
-import cz.tomaskopulety.bookstore.model.Author;
-import cz.tomaskopulety.bookstore.model.Book;
+import cz.tomaskopulety.bookstore.repository.Repository;
 import cz.tomaskopulety.bookstore.model.BookModel;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -33,13 +32,15 @@ public class Service {
     public Set<Author> getAuthors() {
         List<BookModel> database = getDatabase();
         Set<Author> set = new HashSet<>();
-        database.forEach(book -> {
-            set.add(
-                    new Author(book.getAuthor(),
-                            database.stream()
-                                    .filter(bookModel -> bookModel.getAuthor().equals(book.getAuthor()))
-                                    .collect(Collectors.toList())));
-        });
+        database.forEach(book ->
+            set.add(new Author(book.getAuthor(),database)));
         return set;
     }
+
+    public String getWelcomeMessage() {
+        return "Welcome to Book Store App.\n" +
+                "For selecting all books write /books. \n" +
+                "For selecting all authors write /authors.";
+    }
+
 }
