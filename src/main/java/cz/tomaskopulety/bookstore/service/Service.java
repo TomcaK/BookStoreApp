@@ -14,7 +14,7 @@ public class Service {
     private final AuthorRepository authorRepository;
 
     @Autowired
-    public Service(BookRepository bookRepository,AuthorRepository authorRepository) {
+    public Service(BookRepository bookRepository, AuthorRepository authorRepository) {
         this.bookRepository = bookRepository;
         this.authorRepository = authorRepository;
     }
@@ -25,27 +25,6 @@ public class Service {
 
     public List<Author> getAuthors() {
         return authorRepository.findAll();
-    }
-
-
-//    public List<Book> getBooks() {
-////        return getDatabase().stream()
-////                .map(bookModel -> new Book(bookModel.getName(), bookModel.getPrice()))
-////                .collect(Collectors.toList());
-//    }
-//
-//    public Set<Author> getAuthors() {
-////        List<BookModel> database = getDatabase();
-////        Set<Author> set = new HashSet<>();
-////        database.forEach(book ->
-////            set.add(new Author(book.getAuthor(),database)));
-////        return set;
-//    }
-
-    public String getWelcomeMessage() {
-        return "Welcome to Book Store App.\n" +
-                "For selecting all books write /books. \n" +
-                "For selecting all authors write /authors.";
     }
 
 }

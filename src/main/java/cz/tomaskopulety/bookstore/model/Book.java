@@ -1,6 +1,5 @@
 package cz.tomaskopulety.bookstore.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
@@ -26,6 +25,7 @@ public class Book {
 
     public Book() {
     }
+
     @JsonIgnore
     public int getId() {
         return id;
