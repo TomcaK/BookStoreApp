@@ -1,23 +1,35 @@
-package cz.tomaskopulety.bookstore.service;
+package cz.tomaskopulety.bookstore.model;
 
-import cz.tomaskopulety.bookstore.model.BookModel;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
+import javax.persistence.*;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
-import java.util.stream.Collectors;
+import java.util.Set;
 
-
+@Entity
+@Table(name = "authors")
 public class Author {
+    @Id
+    @GeneratedValue
+    @Column(name="author_id")
+    private int id;
     private String name;
+   @OneToMany(mappedBy = "author")
     private List<Book> books;
 
-    public Author(String name, List<BookModel> books) {
+    public Author(String name) {
         this.name = name;
-        this.books = books.stream()
-                .filter(bookModel -> bookModel.getAuthor().equals(name))
-                .map(bookModel -> new Book(bookModel.getName(), bookModel.getPrice())).collect(Collectors.toList());
     }
 
+    public Author() {
+    }
+    @JsonIgnore
+    public int getId() {
+        return id;
+    }
 
     public String getName() {
         return name;

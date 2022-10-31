@@ -1,41 +1,46 @@
 package cz.tomaskopulety.bookstore.service;
 
-import cz.tomaskopulety.bookstore.repository.Repository;
-import cz.tomaskopulety.bookstore.model.BookModel;
+import cz.tomaskopulety.bookstore.model.Author;
+import cz.tomaskopulety.bookstore.model.Book;
+import cz.tomaskopulety.bookstore.repository.AuthorRepository;
+import cz.tomaskopulety.bookstore.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 @org.springframework.stereotype.Service
 public class Service {
-    private final Repository repository;
+    private final BookRepository bookRepository;
+    private final AuthorRepository authorRepository;
 
     @Autowired
-    public Service(Repository repository) {
-        this.repository = repository;
-    }
-
-    private List<BookModel> getDatabase() {
-        return repository.findAll();
-
+    public Service(BookRepository bookRepository,AuthorRepository authorRepository) {
+        this.bookRepository = bookRepository;
+        this.authorRepository = authorRepository;
     }
 
     public List<Book> getBooks() {
-        return getDatabase().stream()
-                .map(bookModel -> new Book(bookModel.getName(), bookModel.getPrice()))
-                .collect(Collectors.toList());
+        return bookRepository.findAll();
     }
 
-    public Set<Author> getAuthors() {
-        List<BookModel> database = getDatabase();
-        Set<Author> set = new HashSet<>();
-        database.forEach(book ->
-            set.add(new Author(book.getAuthor(),database)));
-        return set;
+    public List<Author> getAuthors() {
+        return authorRepository.findAll();
     }
+
+
+//    public List<Book> getBooks() {
+////        return getDatabase().stream()
+////                .map(bookModel -> new Book(bookModel.getName(), bookModel.getPrice()))
+////                .collect(Collectors.toList());
+//    }
+//
+//    public Set<Author> getAuthors() {
+////        List<BookModel> database = getDatabase();
+////        Set<Author> set = new HashSet<>();
+////        database.forEach(book ->
+////            set.add(new Author(book.getAuthor(),database)));
+////        return set;
+//    }
 
     public String getWelcomeMessage() {
         return "Welcome to Book Store App.\n" +
