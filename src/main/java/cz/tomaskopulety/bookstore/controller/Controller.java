@@ -1,8 +1,8 @@
 package cz.tomaskopulety.bookstore.controller;
 
-import cz.tomaskopulety.bookstore.model.Author;
-import cz.tomaskopulety.bookstore.model.Book;
-import cz.tomaskopulety.bookstore.service.Service;
+import cz.tomaskopulety.bookstore.dto.AuthorDto;
+import cz.tomaskopulety.bookstore.dto.BookDto;
+import cz.tomaskopulety.bookstore.dto.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,20 +13,20 @@ import java.util.List;
 @RestController
 @RequestMapping(path = "/")
 public class Controller {
-    private final Service service;
+    private final Mapper mapper;
 
     @Autowired
-    public Controller(Service service) {
-        this.service = service;
+    public Controller(Mapper mapper) {
+        this.mapper = mapper;
     }
 
     @GetMapping(path = "books")
-    public List<Book> getBooks() {
-        return service.getBooks();
+    public List<BookDto> getBooks() {
+        return mapper.getBooksDto();
     }
 
     @GetMapping(path = "authors")
-    public List<Author> getAuthors() {
-        return service.getAuthors();
+    public List<AuthorDto> getAuthors() {
+        return mapper.getAuthorsDto();
     }
 }
