@@ -43,7 +43,7 @@ class ControllerIntegrationTest {
     void getBooksTest() throws Exception {
         when(service.getBooks())
                 .thenReturn(books);
-        MvcResult result = mockMvc.perform(get("/api/v1/books"))
+        MvcResult result = mockMvc.perform(get("/books"))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andReturn();
@@ -54,7 +54,7 @@ class ControllerIntegrationTest {
     void getAuthorsTest() throws Exception {
         when(service.getAuthors())
                 .thenReturn(authors);
-        MvcResult result = mockMvc.perform(get("/api/v1/authors"))
+        MvcResult result = mockMvc.perform(get("/authors"))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andReturn();
