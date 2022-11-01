@@ -2,6 +2,10 @@ package cz.tomaskopulety.bookstore;
 
 import cz.tomaskopulety.bookstore.dto.AuthorDto;
 import cz.tomaskopulety.bookstore.dto.BookDto;
+import cz.tomaskopulety.bookstore.model.Author;
+import cz.tomaskopulety.bookstore.model.Book;
+import cz.tomaskopulety.bookstore.repository.AuthorRepository;
+import cz.tomaskopulety.bookstore.repository.BookRepository;
 import cz.tomaskopulety.bookstore.service.Service;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -26,26 +30,24 @@ class ControllerIntegrationTest {
     @Autowired
     private MockMvc mockMvc;
     @MockBean
-    private Service service;
-    private List<AuthorDto> authors = List.of(
-            new AuthorDto("David Weber",
-                    List.of(new BookDto("On the Basilisk station", 399),
-                            new BookDto("Ashes of the victory", 599))),
-            new AuthorDto("Frank Herbert",
-                    List.of(new BookDto("Dune", 1099),
-                            new BookDto("Children of Dune", 899)))
+    private BookRepository bookRepository;
+    @MockBean
+    private AuthorRepository authorRepository;
+    private List<Author> authors = List.of(
+            new Author("David Weber"),
+            new Author("Frank Herbert")
     );
 
-    private List<BookDto> books = List.of(
-            new BookDto("On the Basilisk station", 399),
-            new BookDto("Ashes of the victory", 599),
-            new BookDto("Dune", 1099),
-            new BookDto("Children of Dune", 899)
+    private List<Book> books = List.of(
+            new Book("On the Basilisk station", 399,authors.get(0)),
+            new Book("Ashes of the victory", 599, authors.get(0)),
+            new Book("Dune", 1099, authors.get(1)),
+            new Book("Children of Dune", 899, authors.get(1))
     );
 
     @Test
     void getBooksTest() throws Exception {
-        when(service.getBooks())
+        when(bookRepository.findAll())
                 .thenReturn(books);
         MvcResult result = mockMvc.perform(get("/books"))
                 .andDo(print())
@@ -56,7 +58,7 @@ class ControllerIntegrationTest {
 
     @Test
     void getAuthorsTest() throws Exception {
-        when(service.getAuthors())
+        when(authorRepository.findAll())
                 .thenReturn(authors);
         MvcResult result = mockMvc.perform(get("/authors"))
                 .andDo(print())

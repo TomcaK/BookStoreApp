@@ -1,7 +1,5 @@
 package cz.tomaskopulety.bookstore.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
 import java.util.Objects;
 
@@ -26,7 +24,7 @@ public class Book {
     public Book() {
     }
 
-    @JsonIgnore
+
     public int getId() {
         return id;
     }
@@ -39,7 +37,7 @@ public class Book {
         return price;
     }
 
-    @JsonIgnore
+
     public Author getAuthor() {
         return author;
     }

@@ -4,11 +4,11 @@ import cz.tomaskopulety.bookstore.dto.AuthorDto;
 import cz.tomaskopulety.bookstore.dto.BookDto;
 import cz.tomaskopulety.bookstore.model.Author;
 import cz.tomaskopulety.bookstore.model.Book;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.stream.Collectors;
 
-@Component
+@Service
 public class Mapper {
 
     public AuthorDto toAuthorDto(Author author) {

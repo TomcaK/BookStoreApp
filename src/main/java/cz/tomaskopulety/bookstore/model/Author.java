@@ -1,8 +1,7 @@
 package cz.tomaskopulety.bookstore.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -15,7 +14,7 @@ public class Author {
     private int id;
     private String name;
     @OneToMany(mappedBy = "author")
-    private List<Book> books;
+    private List<Book> books = new ArrayList<>();
 
     public Author(String name) {
         this.name = name;
@@ -24,7 +23,7 @@ public class Author {
     public Author() {
     }
 
-    @JsonIgnore
+
     public int getId() {
         return id;
     }
