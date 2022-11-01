@@ -1,7 +1,6 @@
 package cz.tomaskopulety.bookstore.model;
 
 import javax.persistence.*;
-import java.util.Objects;
 
 @Entity
 @Table(name = "books")
@@ -40,25 +39,5 @@ public class Book {
 
     public Author getAuthor() {
         return author;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Book book = (Book) o;
-
-        if (!Objects.equals(name, book.name)) return false;
-        return Objects.equals(price, book.price);
-    }
-
-    @Override
-    public int hashCode() {
-        int result = id;
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + price;
-        result = 31 * result + (author != null ? author.hashCode() : 0);
-        return result;
     }
 }
