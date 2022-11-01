@@ -31,8 +31,9 @@ class ControllerIntegrationTest {
             new AuthorDto("David Weber",
                     List.of(new BookDto("On the Basilisk station", 399),
                             new BookDto("Ashes of the victory", 599))),
-            new AuthorDto("Frank Herbert", List.of(new BookDto("Dune", 1099),
-                    new BookDto("Children of Dune", 899)))
+            new AuthorDto("Frank Herbert",
+                    List.of(new BookDto("Dune", 1099),
+                            new BookDto("Children of Dune", 899)))
     );
 
     private List<BookDto> books = List.of(
