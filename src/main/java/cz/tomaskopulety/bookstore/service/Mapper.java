@@ -1,5 +1,7 @@
-package cz.tomaskopulety.bookstore.dto;
+package cz.tomaskopulety.bookstore.service;
 
+import cz.tomaskopulety.bookstore.dto.AuthorDto;
+import cz.tomaskopulety.bookstore.dto.BookDto;
 import cz.tomaskopulety.bookstore.model.Author;
 import cz.tomaskopulety.bookstore.model.Book;
 import org.springframework.stereotype.Component;

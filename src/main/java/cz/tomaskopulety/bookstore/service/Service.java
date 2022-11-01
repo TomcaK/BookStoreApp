@@ -2,7 +2,6 @@ package cz.tomaskopulety.bookstore.service;
 
 import cz.tomaskopulety.bookstore.dto.AuthorDto;
 import cz.tomaskopulety.bookstore.dto.BookDto;
-import cz.tomaskopulety.bookstore.dto.Mapper;
 import cz.tomaskopulety.bookstore.repository.AuthorRepository;
 import cz.tomaskopulety.bookstore.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
